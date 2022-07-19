@@ -1,0 +1,2707 @@
+{
+    "errors": [],
+    "paths": {
+        "_comment": "<add --verbose for a list of skipped paths>",
+        "scanned": ["code.py"]
+    },
+    "results": [{
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 38,
+            "line": 20,
+            "offset": 365
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 12,
+                        "line": 19,
+                        "offset": 300
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 5,
+                        "line": 19,
+                        "offset": 293
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 38,
+                        "line": 19,
+                        "offset": 326
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 27,
+                        "line": 19,
+                        "offset": 315
+                    }
+                }]
+            },
+            "fingerprint": "835c3cf1d6d22fdae92b339324ac08d72b33b7e35c500cd912c4585cb5b742190b2ebd797f2a96c024ffd829481f8f8b7904b27e7bb336e3258beea9d1abe1e8_0",
+            "is_ignored": false,
+            "lines": "    url = \"https://%s/path\" % cleaned",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$APP": {
+                    "abstract_content": "app",
+                    "end": {
+                        "col": 5,
+                        "line": 15,
+                        "offset": 173
+                    },
+                    "start": {
+                        "col": 2,
+                        "line": 15,
+                        "offset": 170
+                    },
+                    "unique_id": {
+                        "md5sum": "c1a08654c3891487725ab53bc9ed803c",
+                        "type": "AST"
+                    }
+                },
+                "$FUNC": {
+                    "abstract_content": "route_param",
+                    "end": {
+                        "col": 16,
+                        "line": 16,
+                        "offset": 225
+                    },
+                    "start": {
+                        "col": 5,
+                        "line": 16,
+                        "offset": 214
+                    },
+                    "unique_id": {
+                        "md5sum": "4fdc4ba99ac07569ffa8630950572f9d",
+                        "type": "AST"
+                    }
+                },
+                "$ROUTEVAR": {
+                    "abstract_content": "route_param",
+                    "end": {
+                        "col": 38,
+                        "line": 19,
+                        "offset": 326
+                    },
+                    "start": {
+                        "col": 27,
+                        "line": 19,
+                        "offset": 315
+                    },
+                    "unique_id": {
+                        "sid": 4,
+                        "type": "id"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "https://%s/path",
+                    "end": {
+                        "col": 27,
+                        "line": 20,
+                        "offset": 354
+                    },
+                    "start": {
+                        "col": 12,
+                        "line": 20,
+                        "offset": 339
+                    },
+                    "unique_id": {
+                        "md5sum": "9bc43a4f133c4a3d7dd655a51416dc2f",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 11,
+            "line": 20,
+            "offset": 338
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 37,
+            "line": 24,
+            "offset": 456
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 12,
+                        "line": 19,
+                        "offset": 300
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 5,
+                        "line": 19,
+                        "offset": 293
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 38,
+                        "line": 19,
+                        "offset": 326
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 27,
+                        "line": 19,
+                        "offset": 315
+                    }
+                }]
+            },
+            "fingerprint": "101253f4e607ef8fda004daae496e7e1dd9014729d0590f067a0cbcbdbbb65f3be4429f7ba06999cd053b82d999cb567576be4185979ee906592640f4e362aea_0",
+            "is_ignored": false,
+            "lines": "    url = \"http://%r/path\" % cleaned",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$APP": {
+                    "abstract_content": "app",
+                    "end": {
+                        "col": 5,
+                        "line": 15,
+                        "offset": 173
+                    },
+                    "start": {
+                        "col": 2,
+                        "line": 15,
+                        "offset": 170
+                    },
+                    "unique_id": {
+                        "md5sum": "5a6baa84d5f9e7e916d75822ceaca2f3",
+                        "type": "AST"
+                    }
+                },
+                "$FUNC": {
+                    "abstract_content": "route_param",
+                    "end": {
+                        "col": 16,
+                        "line": 16,
+                        "offset": 225
+                    },
+                    "start": {
+                        "col": 5,
+                        "line": 16,
+                        "offset": 214
+                    },
+                    "unique_id": {
+                        "md5sum": "4fdc4ba99ac07569ffa8630950572f9d",
+                        "type": "AST"
+                    }
+                },
+                "$ROUTEVAR": {
+                    "abstract_content": "route_param",
+                    "end": {
+                        "col": 38,
+                        "line": 19,
+                        "offset": 326
+                    },
+                    "start": {
+                        "col": 27,
+                        "line": 19,
+                        "offset": 315
+                    },
+                    "unique_id": {
+                        "sid": 4,
+                        "type": "id"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "http://%r/path",
+                    "end": {
+                        "col": 26,
+                        "line": 24,
+                        "offset": 445
+                    },
+                    "start": {
+                        "col": 12,
+                        "line": 24,
+                        "offset": 431
+                    },
+                    "unique_id": {
+                        "md5sum": "9120d5a90104cfcbfe68a9634f6046cd",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 11,
+            "line": 24,
+            "offset": 430
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 45,
+            "line": 39,
+            "offset": 855
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [],
+                "taint_source": [{
+                    "end": {
+                        "col": 45,
+                        "line": 39,
+                        "offset": 855
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 34,
+                        "line": 39,
+                        "offset": 844
+                    }
+                }]
+            },
+            "fingerprint": "1696f0c7dda4a587c786eb0174a548783d8c35736c397c55ce33bbbb3c0b73a200ce069028b3f44f91f9a0fdf61c7fb06595e9cfc8110bc6cac5e0f549948aef_0",
+            "is_ignored": false,
+            "lines": "    do_thing(\"https://%s/path\" % route_param)",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$APP": {
+                    "abstract_content": "app",
+                    "end": {
+                        "col": 5,
+                        "line": 35,
+                        "offset": 681
+                    },
+                    "start": {
+                        "col": 2,
+                        "line": 35,
+                        "offset": 678
+                    },
+                    "unique_id": {
+                        "md5sum": "c4cce330d2ad326396d851c467c4cf42",
+                        "type": "AST"
+                    }
+                },
+                "$FUNC": {
+                    "abstract_content": "route_param_format",
+                    "end": {
+                        "col": 23,
+                        "line": 36,
+                        "offset": 747
+                    },
+                    "start": {
+                        "col": 5,
+                        "line": 36,
+                        "offset": 729
+                    },
+                    "unique_id": {
+                        "md5sum": "6ec4d345d6be59e8856515dbc48b7307",
+                        "type": "AST"
+                    }
+                },
+                "$ROUTEVAR": {
+                    "abstract_content": "route_param",
+                    "end": {
+                        "col": 45,
+                        "line": 39,
+                        "offset": 855
+                    },
+                    "start": {
+                        "col": 34,
+                        "line": 39,
+                        "offset": 844
+                    },
+                    "unique_id": {
+                        "sid": 8,
+                        "type": "id"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "https://%s/path",
+                    "end": {
+                        "col": 30,
+                        "line": 39,
+                        "offset": 840
+                    },
+                    "start": {
+                        "col": 15,
+                        "line": 39,
+                        "offset": 825
+                    },
+                    "unique_id": {
+                        "md5sum": "9bc43a4f133c4a3d7dd655a51416dc2f",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 14,
+            "line": 39,
+            "offset": 824
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 73,
+            "line": 40,
+            "offset": 929
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [],
+                "taint_source": [{
+                    "end": {
+                        "col": 72,
+                        "line": 40,
+                        "offset": 928
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 61,
+                        "line": 40,
+                        "offset": 917
+                    }
+                }]
+            },
+            "fingerprint": "499aac87d8c52cfbd251473474a456b4e740160ae078475b83d79f11a645859391304bc05517ad2e8b30b1dee926e4243a72b6ebfa3aec1ae2d71ab5ff56b5d9_0",
+            "is_ignored": false,
+            "lines": "    return \"<a href='https://{}/path'>Click me!</a>\".format(route_param)",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$APP": {
+                    "abstract_content": "app",
+                    "end": {
+                        "col": 5,
+                        "line": 35,
+                        "offset": 681
+                    },
+                    "start": {
+                        "col": 2,
+                        "line": 35,
+                        "offset": 678
+                    },
+                    "unique_id": {
+                        "md5sum": "43f9aebf16372d26ee8c499dd1476b2d",
+                        "type": "AST"
+                    }
+                },
+                "$FUNC": {
+                    "abstract_content": "route_param_format",
+                    "end": {
+                        "col": 23,
+                        "line": 36,
+                        "offset": 747
+                    },
+                    "start": {
+                        "col": 5,
+                        "line": 36,
+                        "offset": 729
+                    },
+                    "unique_id": {
+                        "md5sum": "6ec4d345d6be59e8856515dbc48b7307",
+                        "type": "AST"
+                    }
+                },
+                "$ROUTEVAR": {
+                    "abstract_content": "route_param",
+                    "end": {
+                        "col": 72,
+                        "line": 40,
+                        "offset": 928
+                    },
+                    "start": {
+                        "col": 61,
+                        "line": 40,
+                        "offset": 917
+                    },
+                    "unique_id": {
+                        "sid": 8,
+                        "type": "id"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "<a href='https://{}/path'>Click me!</a>",
+                    "end": {
+                        "col": 52,
+                        "line": 40,
+                        "offset": 908
+                    },
+                    "start": {
+                        "col": 13,
+                        "line": 40,
+                        "offset": 869
+                    },
+                    "unique_id": {
+                        "md5sum": "ce160e0cc06834c09efcf60c49b77ba8",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 12,
+            "line": 40,
+            "offset": 868
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 45,
+            "line": 53,
+            "offset": 1402
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [],
+                "taint_source": [{
+                    "end": {
+                        "col": 45,
+                        "line": 53,
+                        "offset": 1402
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 34,
+                        "line": 53,
+                        "offset": 1391
+                    }
+                }]
+            },
+            "fingerprint": "8206814dfb88124d2224acb5cca347dddb8fee2b873ab0b01a8720be0102cbae708d939c953d313999965b901c41602a5eabbb2092893b99794d3cecf5d0cf7a_1",
+            "is_ignored": false,
+            "lines": "    do_thing(\"https://%s/path\" % route_param)",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$APP": {
+                    "abstract_content": "app",
+                    "end": {
+                        "col": 5,
+                        "line": 48,
+                        "offset": 1173
+                    },
+                    "start": {
+                        "col": 2,
+                        "line": 48,
+                        "offset": 1170
+                    },
+                    "unique_id": {
+                        "md5sum": "3354a4158b6bb1264ca8733a924eff85",
+                        "type": "AST"
+                    }
+                },
+                "$FUNC": {
+                    "abstract_content": "route_param_percent_format",
+                    "end": {
+                        "col": 31,
+                        "line": 49,
+                        "offset": 1255
+                    },
+                    "start": {
+                        "col": 5,
+                        "line": 49,
+                        "offset": 1229
+                    },
+                    "unique_id": {
+                        "md5sum": "3ae35b117bd571ef966e820ad66fe942",
+                        "type": "AST"
+                    }
+                },
+                "$ROUTEVAR": {
+                    "abstract_content": "route_param",
+                    "end": {
+                        "col": 45,
+                        "line": 53,
+                        "offset": 1402
+                    },
+                    "start": {
+                        "col": 34,
+                        "line": 53,
+                        "offset": 1391
+                    },
+                    "unique_id": {
+                        "sid": 10,
+                        "type": "id"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "https://%s/path",
+                    "end": {
+                        "col": 30,
+                        "line": 53,
+                        "offset": 1387
+                    },
+                    "start": {
+                        "col": 15,
+                        "line": 53,
+                        "offset": 1372
+                    },
+                    "unique_id": {
+                        "md5sum": "9bc43a4f133c4a3d7dd655a51416dc2f",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 14,
+            "line": 53,
+            "offset": 1371
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 41,
+            "line": 54,
+            "offset": 1444
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 12,
+                        "line": 51,
+                        "offset": 1299
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 5,
+                        "line": 51,
+                        "offset": 1292
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 38,
+                        "line": 51,
+                        "offset": 1325
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 27,
+                        "line": 51,
+                        "offset": 1314
+                    }
+                }]
+            },
+            "fingerprint": "8206814dfb88124d2224acb5cca347dddb8fee2b873ab0b01a8720be0102cbae708d939c953d313999965b901c41602a5eabbb2092893b99794d3cecf5d0cf7a_0",
+            "is_ignored": false,
+            "lines": "    do_thing(\"https://%s/path\" % cleaned)",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$APP": {
+                    "abstract_content": "app",
+                    "end": {
+                        "col": 5,
+                        "line": 48,
+                        "offset": 1173
+                    },
+                    "start": {
+                        "col": 2,
+                        "line": 48,
+                        "offset": 1170
+                    },
+                    "unique_id": {
+                        "md5sum": "2000e97a5f5e73bda2fff45305d2777a",
+                        "type": "AST"
+                    }
+                },
+                "$FUNC": {
+                    "abstract_content": "route_param_percent_format",
+                    "end": {
+                        "col": 31,
+                        "line": 49,
+                        "offset": 1255
+                    },
+                    "start": {
+                        "col": 5,
+                        "line": 49,
+                        "offset": 1229
+                    },
+                    "unique_id": {
+                        "md5sum": "3ae35b117bd571ef966e820ad66fe942",
+                        "type": "AST"
+                    }
+                },
+                "$ROUTEVAR": {
+                    "abstract_content": "route_param",
+                    "end": {
+                        "col": 38,
+                        "line": 51,
+                        "offset": 1325
+                    },
+                    "start": {
+                        "col": 27,
+                        "line": 51,
+                        "offset": 1314
+                    },
+                    "unique_id": {
+                        "sid": 10,
+                        "type": "id"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "https://%s/path",
+                    "end": {
+                        "col": 30,
+                        "line": 54,
+                        "offset": 1433
+                    },
+                    "start": {
+                        "col": 15,
+                        "line": 54,
+                        "offset": 1418
+                    },
+                    "unique_id": {
+                        "md5sum": "9bc43a4f133c4a3d7dd655a51416dc2f",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 14,
+            "line": 54,
+            "offset": 1417
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 63,
+            "line": 55,
+            "offset": 1508
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 12,
+                        "line": 51,
+                        "offset": 1299
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 5,
+                        "line": 51,
+                        "offset": 1292
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 38,
+                        "line": 51,
+                        "offset": 1325
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 27,
+                        "line": 51,
+                        "offset": 1314
+                    }
+                }]
+            },
+            "fingerprint": "af5fb4b06d23bf971c7721381af1d47a4da0b3a0aed4eda3d8cfa56343591f6953639c352bebacddec375434d91a764b5b55c3b48a93ceeb1def05e7152a8643_0",
+            "is_ignored": false,
+            "lines": "    return \"<a href='https://%s/path'>Click me!</a>\" % cleaned",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$APP": {
+                    "abstract_content": "app",
+                    "end": {
+                        "col": 5,
+                        "line": 48,
+                        "offset": 1173
+                    },
+                    "start": {
+                        "col": 2,
+                        "line": 48,
+                        "offset": 1170
+                    },
+                    "unique_id": {
+                        "md5sum": "485a76dc6502f0081cf9824abd6048ee",
+                        "type": "AST"
+                    }
+                },
+                "$FUNC": {
+                    "abstract_content": "route_param_percent_format",
+                    "end": {
+                        "col": 31,
+                        "line": 49,
+                        "offset": 1255
+                    },
+                    "start": {
+                        "col": 5,
+                        "line": 49,
+                        "offset": 1229
+                    },
+                    "unique_id": {
+                        "md5sum": "3ae35b117bd571ef966e820ad66fe942",
+                        "type": "AST"
+                    }
+                },
+                "$ROUTEVAR": {
+                    "abstract_content": "route_param",
+                    "end": {
+                        "col": 38,
+                        "line": 51,
+                        "offset": 1325
+                    },
+                    "start": {
+                        "col": 27,
+                        "line": 51,
+                        "offset": 1314
+                    },
+                    "unique_id": {
+                        "sid": 10,
+                        "type": "id"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "<a href='https://%s/path'>Click me!</a>",
+                    "end": {
+                        "col": 52,
+                        "line": 55,
+                        "offset": 1497
+                    },
+                    "start": {
+                        "col": 13,
+                        "line": 55,
+                        "offset": 1458
+                    },
+                    "unique_id": {
+                        "md5sum": "8e0e953cbc22d3e7af93a2258a902d01",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 12,
+            "line": 55,
+            "offset": 1457
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 87,
+            "line": 66,
+            "offset": 1948
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 70,
+                        "line": 66,
+                        "offset": 1931
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 69,
+                        "line": 66,
+                        "offset": 1930
+                    }
+                }, {
+                    "end": {
+                        "col": 75,
+                        "line": 66,
+                        "offset": 1936
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 74,
+                        "line": 66,
+                        "offset": 1935
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 61,
+                        "line": 66,
+                        "offset": 1922
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 56,
+                        "line": 66,
+                        "offset": 1917
+                    }
+                }, {
+                    "end": {
+                        "col": 62,
+                        "line": 66,
+                        "offset": 1923
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 61,
+                        "line": 66,
+                        "offset": 1922
+                    }
+                }, {
+                    "end": {
+                        "col": 69,
+                        "line": 66,
+                        "offset": 1930
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 62,
+                        "line": 66,
+                        "offset": 1923
+                    }
+                }, {
+                    "end": {
+                        "col": 70,
+                        "line": 66,
+                        "offset": 1931
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 69,
+                        "line": 66,
+                        "offset": 1930
+                    }
+                }, {
+                    "end": {
+                        "col": 74,
+                        "line": 66,
+                        "offset": 1935
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 70,
+                        "line": 66,
+                        "offset": 1931
+                    }
+                }]
+            },
+            "fingerprint": "eeff08e011ac820e45fd2b3d17b7029cc173ab2ae84e2b124c4f92344a6568104ad4e4a193b36f4c100b312bd10245679642cbb59db63091db5ca541ac1d027c_0",
+            "is_ignored": false,
+            "lines": "    return \"<a href='https://%s/path'>Click me!</a>\" % flask.request.args.get(\"param\")",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$ANYTHING": {
+                    "abstract_content": "args",
+                    "end": {
+                        "col": 74,
+                        "line": 66,
+                        "offset": 1935
+                    },
+                    "start": {
+                        "col": 70,
+                        "line": 66,
+                        "offset": 1931
+                    },
+                    "unique_id": {
+                        "md5sum": "2e18f0c933cc6ca9060c7fed3f8000cf",
+                        "type": "AST"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "<a href='https://%s/path'>Click me!</a>",
+                    "end": {
+                        "col": 52,
+                        "line": 66,
+                        "offset": 1913
+                    },
+                    "start": {
+                        "col": 13,
+                        "line": 66,
+                        "offset": 1874
+                    },
+                    "unique_id": {
+                        "md5sum": "8e0e953cbc22d3e7af93a2258a902d01",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 12,
+            "line": 66,
+            "offset": 1873
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 84,
+            "line": 71,
+            "offset": 2151
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 47,
+                        "line": 71,
+                        "offset": 2114
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 46,
+                        "line": 71,
+                        "offset": 2113
+                    }
+                }, {
+                    "end": {
+                        "col": 52,
+                        "line": 71,
+                        "offset": 2119
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 51,
+                        "line": 71,
+                        "offset": 2118
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 38,
+                        "line": 71,
+                        "offset": 2105
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 33,
+                        "line": 71,
+                        "offset": 2100
+                    }
+                }, {
+                    "end": {
+                        "col": 39,
+                        "line": 71,
+                        "offset": 2106
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 38,
+                        "line": 71,
+                        "offset": 2105
+                    }
+                }, {
+                    "end": {
+                        "col": 46,
+                        "line": 71,
+                        "offset": 2113
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 39,
+                        "line": 71,
+                        "offset": 2106
+                    }
+                }, {
+                    "end": {
+                        "col": 47,
+                        "line": 71,
+                        "offset": 2114
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 46,
+                        "line": 71,
+                        "offset": 2113
+                    }
+                }, {
+                    "end": {
+                        "col": 51,
+                        "line": 71,
+                        "offset": 2118
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 47,
+                        "line": 71,
+                        "offset": 2114
+                    }
+                }]
+            },
+            "fingerprint": "d9fe83f2b91e9c3f9a99a8d313793a5b599208d2a4af6117c04b545d6b8909c2ba0b82487c49e2dfdf413403cdc6d93a56c796c82f0c72ba23f7bac0ec709d48_0",
+            "is_ignored": false,
+            "lines": "    return \"<a href='http://\" + flask.request.args.get(\"param\") + \"'>Click me!</a>\"",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$ANYTHING": {
+                    "abstract_content": "args",
+                    "end": {
+                        "col": 51,
+                        "line": 71,
+                        "offset": 2118
+                    },
+                    "start": {
+                        "col": 47,
+                        "line": 71,
+                        "offset": 2114
+                    },
+                    "unique_id": {
+                        "md5sum": "963993b17ae35133506eec7864c63896",
+                        "type": "AST"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "<a href='http://",
+                    "end": {
+                        "col": 29,
+                        "line": 71,
+                        "offset": 2096
+                    },
+                    "start": {
+                        "col": 13,
+                        "line": 71,
+                        "offset": 2080
+                    },
+                    "unique_id": {
+                        "md5sum": "a62e07ce3dc2a6bd117d9774b701c022",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 12,
+            "line": 71,
+            "offset": 2079
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 84,
+            "line": 81,
+            "offset": 2577
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 46,
+                        "line": 81,
+                        "offset": 2539
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 45,
+                        "line": 81,
+                        "offset": 2538
+                    }
+                }, {
+                    "end": {
+                        "col": 51,
+                        "line": 81,
+                        "offset": 2544
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 50,
+                        "line": 81,
+                        "offset": 2543
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 37,
+                        "line": 81,
+                        "offset": 2530
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 32,
+                        "line": 81,
+                        "offset": 2525
+                    }
+                }, {
+                    "end": {
+                        "col": 38,
+                        "line": 81,
+                        "offset": 2531
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 37,
+                        "line": 81,
+                        "offset": 2530
+                    }
+                }, {
+                    "end": {
+                        "col": 45,
+                        "line": 81,
+                        "offset": 2538
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 38,
+                        "line": 81,
+                        "offset": 2531
+                    }
+                }, {
+                    "end": {
+                        "col": 46,
+                        "line": 81,
+                        "offset": 2539
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 45,
+                        "line": 81,
+                        "offset": 2538
+                    }
+                }, {
+                    "end": {
+                        "col": 50,
+                        "line": 81,
+                        "offset": 2543
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 46,
+                        "line": 81,
+                        "offset": 2539
+                    }
+                }]
+            },
+            "fingerprint": "ba1ef948ef68d6a1c26f4516f662d8fff5a5047b6562b619cf906736960cc36ed122b55b95689ec4594a300e8dd3b2f0b5028cd1d5aac2b2e1dfb41e34f1b8ca_0",
+            "is_ignored": false,
+            "lines": "    return f\"<a href='https://{flask.request.args.get('param')}/path'>Click me!</a>\"",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$ANYTHING": {
+                    "abstract_content": "args",
+                    "end": {
+                        "col": 50,
+                        "line": 81,
+                        "offset": 2543
+                    },
+                    "start": {
+                        "col": 46,
+                        "line": 81,
+                        "offset": 2539
+                    },
+                    "unique_id": {
+                        "md5sum": "f6da571d46bf55991bea81bca528ad04",
+                        "type": "AST"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "<a href='https://",
+                    "end": {
+                        "col": 31,
+                        "line": 81,
+                        "offset": 2524
+                    },
+                    "start": {
+                        "col": 14,
+                        "line": 81,
+                        "offset": 2507
+                    },
+                    "unique_id": {
+                        "md5sum": "3d85ef1a84907ec8558fd8b9da0da932",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 14,
+            "line": 81,
+            "offset": 2507
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 64,
+            "line": 92,
+            "offset": 3015
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 27,
+                        "line": 90,
+                        "offset": 2903
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 26,
+                        "line": 90,
+                        "offset": 2902
+                    }
+                }, {
+                    "end": {
+                        "col": 32,
+                        "line": 90,
+                        "offset": 2908
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 31,
+                        "line": 90,
+                        "offset": 2907
+                    }
+                }, {
+                    "end": {
+                        "col": 10,
+                        "line": 90,
+                        "offset": 2886
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 5,
+                        "line": 90,
+                        "offset": 2881
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 18,
+                        "line": 90,
+                        "offset": 2894
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 13,
+                        "line": 90,
+                        "offset": 2889
+                    }
+                }, {
+                    "end": {
+                        "col": 19,
+                        "line": 90,
+                        "offset": 2895
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 18,
+                        "line": 90,
+                        "offset": 2894
+                    }
+                }, {
+                    "end": {
+                        "col": 26,
+                        "line": 90,
+                        "offset": 2902
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 19,
+                        "line": 90,
+                        "offset": 2895
+                    }
+                }, {
+                    "end": {
+                        "col": 27,
+                        "line": 90,
+                        "offset": 2903
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 26,
+                        "line": 90,
+                        "offset": 2902
+                    }
+                }, {
+                    "end": {
+                        "col": 31,
+                        "line": 90,
+                        "offset": 2907
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 27,
+                        "line": 90,
+                        "offset": 2903
+                    }
+                }]
+            },
+            "fingerprint": "ba1ef948ef68d6a1c26f4516f662d8fff5a5047b6562b619cf906736960cc36ed122b55b95689ec4594a300e8dd3b2f0b5028cd1d5aac2b2e1dfb41e34f1b8ca_0",
+            "is_ignored": false,
+            "lines": "    return \"<a href='https://\" + param + \"/path'>Click me!</a>\"",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$ANYTHING": {
+                    "abstract_content": "args",
+                    "end": {
+                        "col": 31,
+                        "line": 90,
+                        "offset": 2907
+                    },
+                    "start": {
+                        "col": 27,
+                        "line": 90,
+                        "offset": 2903
+                    },
+                    "unique_id": {
+                        "md5sum": "c666661e45958a2d73955088d5ca66c3",
+                        "type": "AST"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "<a href='https://",
+                    "end": {
+                        "col": 30,
+                        "line": 92,
+                        "offset": 2981
+                    },
+                    "start": {
+                        "col": 13,
+                        "line": 92,
+                        "offset": 2964
+                    },
+                    "unique_id": {
+                        "md5sum": "3d85ef1a84907ec8558fd8b9da0da932",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 12,
+            "line": 92,
+            "offset": 2963
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 67,
+            "line": 98,
+            "offset": 3231
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 27,
+                        "line": 96,
+                        "offset": 3116
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 26,
+                        "line": 96,
+                        "offset": 3115
+                    }
+                }, {
+                    "end": {
+                        "col": 32,
+                        "line": 96,
+                        "offset": 3121
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 31,
+                        "line": 96,
+                        "offset": 3120
+                    }
+                }, {
+                    "end": {
+                        "col": 10,
+                        "line": 96,
+                        "offset": 3099
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 5,
+                        "line": 96,
+                        "offset": 3094
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 18,
+                        "line": 96,
+                        "offset": 3107
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 13,
+                        "line": 96,
+                        "offset": 3102
+                    }
+                }, {
+                    "end": {
+                        "col": 19,
+                        "line": 96,
+                        "offset": 3108
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 18,
+                        "line": 96,
+                        "offset": 3107
+                    }
+                }, {
+                    "end": {
+                        "col": 26,
+                        "line": 96,
+                        "offset": 3115
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 19,
+                        "line": 96,
+                        "offset": 3108
+                    }
+                }, {
+                    "end": {
+                        "col": 27,
+                        "line": 96,
+                        "offset": 3116
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 26,
+                        "line": 96,
+                        "offset": 3115
+                    }
+                }, {
+                    "end": {
+                        "col": 31,
+                        "line": 96,
+                        "offset": 3120
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 27,
+                        "line": 96,
+                        "offset": 3116
+                    }
+                }]
+            },
+            "fingerprint": "85cdb043e2e0b1255168f85517008d0838162a6641b060a7d866257ad3ffc898874b0c7ee70d6b339327359781c411bbf6b28c1ce9321de08b32c78c2879bf80_0",
+            "is_ignored": false,
+            "lines": "    return \"<a href='https://{}/path'>Click me!</a>\".format(param)",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$ANYTHING": {
+                    "abstract_content": "args",
+                    "end": {
+                        "col": 31,
+                        "line": 96,
+                        "offset": 3120
+                    },
+                    "start": {
+                        "col": 27,
+                        "line": 96,
+                        "offset": 3116
+                    },
+                    "unique_id": {
+                        "md5sum": "dc16707ce03fc63b7ac66b147d4bb4cf",
+                        "type": "AST"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "<a href='https://{}/path'>Click me!</a>",
+                    "end": {
+                        "col": 52,
+                        "line": 98,
+                        "offset": 3216
+                    },
+                    "start": {
+                        "col": 13,
+                        "line": 98,
+                        "offset": 3177
+                    },
+                    "unique_id": {
+                        "md5sum": "ce160e0cc06834c09efcf60c49b77ba8",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 12,
+            "line": 98,
+            "offset": 3176
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 64,
+            "line": 104,
+            "offset": 3460
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 27,
+                        "line": 102,
+                        "offset": 3348
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 26,
+                        "line": 102,
+                        "offset": 3347
+                    }
+                }, {
+                    "end": {
+                        "col": 32,
+                        "line": 102,
+                        "offset": 3353
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 31,
+                        "line": 102,
+                        "offset": 3352
+                    }
+                }, {
+                    "end": {
+                        "col": 10,
+                        "line": 102,
+                        "offset": 3331
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 5,
+                        "line": 102,
+                        "offset": 3326
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 18,
+                        "line": 102,
+                        "offset": 3339
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 13,
+                        "line": 102,
+                        "offset": 3334
+                    }
+                }, {
+                    "end": {
+                        "col": 19,
+                        "line": 102,
+                        "offset": 3340
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 18,
+                        "line": 102,
+                        "offset": 3339
+                    }
+                }, {
+                    "end": {
+                        "col": 26,
+                        "line": 102,
+                        "offset": 3347
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 19,
+                        "line": 102,
+                        "offset": 3340
+                    }
+                }, {
+                    "end": {
+                        "col": 27,
+                        "line": 102,
+                        "offset": 3348
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 26,
+                        "line": 102,
+                        "offset": 3347
+                    }
+                }, {
+                    "end": {
+                        "col": 31,
+                        "line": 102,
+                        "offset": 3352
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 27,
+                        "line": 102,
+                        "offset": 3348
+                    }
+                }]
+            },
+            "fingerprint": "eeff08e011ac820e45fd2b3d17b7029cc173ab2ae84e2b124c4f92344a6568104ad4e4a193b36f4c100b312bd10245679642cbb59db63091db5ca541ac1d027c_0",
+            "is_ignored": false,
+            "lines": "    return \"<a href='https://%s/path'>Click me!</a>\" % (param,)",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$ANYTHING": {
+                    "abstract_content": "args",
+                    "end": {
+                        "col": 31,
+                        "line": 102,
+                        "offset": 3352
+                    },
+                    "start": {
+                        "col": 27,
+                        "line": 102,
+                        "offset": 3348
+                    },
+                    "unique_id": {
+                        "md5sum": "c1a065daf85e6934deee936989f55a43",
+                        "type": "AST"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "<a href='https://%s/path'>Click me!</a>",
+                    "end": {
+                        "col": 52,
+                        "line": 104,
+                        "offset": 3448
+                    },
+                    "start": {
+                        "col": 13,
+                        "line": 104,
+                        "offset": 3409
+                    },
+                    "unique_id": {
+                        "md5sum": "8e0e953cbc22d3e7af93a2258a902d01",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 12,
+            "line": 104,
+            "offset": 3408
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 68,
+            "line": 111,
+            "offset": 3693
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 27,
+                        "line": 108,
+                        "offset": 3564
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 26,
+                        "line": 108,
+                        "offset": 3563
+                    }
+                }, {
+                    "end": {
+                        "col": 10,
+                        "line": 108,
+                        "offset": 3547
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 5,
+                        "line": 108,
+                        "offset": 3542
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 18,
+                        "line": 108,
+                        "offset": 3555
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 13,
+                        "line": 108,
+                        "offset": 3550
+                    }
+                }, {
+                    "end": {
+                        "col": 19,
+                        "line": 108,
+                        "offset": 3556
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 18,
+                        "line": 108,
+                        "offset": 3555
+                    }
+                }, {
+                    "end": {
+                        "col": 26,
+                        "line": 108,
+                        "offset": 3563
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 19,
+                        "line": 108,
+                        "offset": 3556
+                    }
+                }, {
+                    "end": {
+                        "col": 27,
+                        "line": 108,
+                        "offset": 3564
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 26,
+                        "line": 108,
+                        "offset": 3563
+                    }
+                }, {
+                    "end": {
+                        "col": 31,
+                        "line": 108,
+                        "offset": 3568
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 27,
+                        "line": 108,
+                        "offset": 3564
+                    }
+                }]
+            },
+            "fingerprint": "5abb7ecb504bb51c69ba22928bfb1808ba02249f09090e7085e55fd3331871321195aebfbc7603d3918c886696a22fe321a5463eb52d12e9a15fbe8d46a7ed28_0",
+            "is_ignored": false,
+            "lines": "        return \"<a href='https://%r/path'>Click me!</a>\" % (param,)",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$ANYTHING": {
+                    "abstract_content": "form",
+                    "end": {
+                        "col": 31,
+                        "line": 108,
+                        "offset": 3568
+                    },
+                    "start": {
+                        "col": 27,
+                        "line": 108,
+                        "offset": 3564
+                    },
+                    "unique_id": {
+                        "md5sum": "ad77d18ea7efb4532ef9a9f6ee4655f0",
+                        "type": "AST"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "<a href='https://%r/path'>Click me!</a>",
+                    "end": {
+                        "col": 56,
+                        "line": 111,
+                        "offset": 3681
+                    },
+                    "start": {
+                        "col": 17,
+                        "line": 111,
+                        "offset": 3642
+                    },
+                    "unique_id": {
+                        "md5sum": "365c3eb1525dcdd786efd4c3e71551c7",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 16,
+            "line": 111,
+            "offset": 3641
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 73,
+            "line": 113,
+            "offset": 3776
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 27,
+                        "line": 108,
+                        "offset": 3564
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 26,
+                        "line": 108,
+                        "offset": 3563
+                    }
+                }, {
+                    "end": {
+                        "col": 10,
+                        "line": 108,
+                        "offset": 3547
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 5,
+                        "line": 108,
+                        "offset": 3542
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 18,
+                        "line": 108,
+                        "offset": 3555
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 13,
+                        "line": 108,
+                        "offset": 3550
+                    }
+                }, {
+                    "end": {
+                        "col": 19,
+                        "line": 108,
+                        "offset": 3556
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 18,
+                        "line": 108,
+                        "offset": 3555
+                    }
+                }, {
+                    "end": {
+                        "col": 26,
+                        "line": 108,
+                        "offset": 3563
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 19,
+                        "line": 108,
+                        "offset": 3556
+                    }
+                }, {
+                    "end": {
+                        "col": 27,
+                        "line": 108,
+                        "offset": 3564
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 26,
+                        "line": 108,
+                        "offset": 3563
+                    }
+                }, {
+                    "end": {
+                        "col": 31,
+                        "line": 108,
+                        "offset": 3568
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 27,
+                        "line": 108,
+                        "offset": 3564
+                    }
+                }]
+            },
+            "fingerprint": "a74f5e1e86110a8f970cefa1c0139da949570084d85a4734023a31682b837135fff24100dce92b952ff41138f1b81f28ad49c8d45558fda2f440d6c66bae06da_0",
+            "is_ignored": false,
+            "lines": "        return \"<a href='https://%r/path'>Click me also!</a>\" % (param,)",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$ANYTHING": {
+                    "abstract_content": "form",
+                    "end": {
+                        "col": 31,
+                        "line": 108,
+                        "offset": 3568
+                    },
+                    "start": {
+                        "col": 27,
+                        "line": 108,
+                        "offset": 3564
+                    },
+                    "unique_id": {
+                        "md5sum": "ad77d18ea7efb4532ef9a9f6ee4655f0",
+                        "type": "AST"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "<a href='https://%r/path'>Click me also!</a>",
+                    "end": {
+                        "col": 61,
+                        "line": 113,
+                        "offset": 3764
+                    },
+                    "start": {
+                        "col": 17,
+                        "line": 113,
+                        "offset": 3720
+                    },
+                    "unique_id": {
+                        "md5sum": "a63585eaf116fe5597862994d9070140",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 16,
+            "line": 113,
+            "offset": 3719
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 85,
+            "line": 121,
+            "offset": 4065
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 27,
+                        "line": 117,
+                        "offset": 3880
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 26,
+                        "line": 117,
+                        "offset": 3879
+                    }
+                }, {
+                    "end": {
+                        "col": 10,
+                        "line": 117,
+                        "offset": 3863
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 5,
+                        "line": 117,
+                        "offset": 3858
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 18,
+                        "line": 117,
+                        "offset": 3871
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 13,
+                        "line": 117,
+                        "offset": 3866
+                    }
+                }, {
+                    "end": {
+                        "col": 19,
+                        "line": 117,
+                        "offset": 3872
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 18,
+                        "line": 117,
+                        "offset": 3871
+                    }
+                }, {
+                    "end": {
+                        "col": 26,
+                        "line": 117,
+                        "offset": 3879
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 19,
+                        "line": 117,
+                        "offset": 3872
+                    }
+                }, {
+                    "end": {
+                        "col": 27,
+                        "line": 117,
+                        "offset": 3880
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 26,
+                        "line": 117,
+                        "offset": 3879
+                    }
+                }, {
+                    "end": {
+                        "col": 31,
+                        "line": 117,
+                        "offset": 3884
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 27,
+                        "line": 117,
+                        "offset": 3880
+                    }
+                }]
+            },
+            "fingerprint": "82a7681595cf1cf189715558c4f3d8ee83897f5b54765bac6b03d7563c57340306553d443127278acdc3c2a5bc683c0b9522a9516d47cf6640b95ee69ac81ef4_0",
+            "is_ignored": false,
+            "lines": "        return \"<a href='https://%r/path/%r/'>Click me!</a>\" % (param,param_cleaned)",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$ANYTHING": {
+                    "abstract_content": "form",
+                    "end": {
+                        "col": 31,
+                        "line": 117,
+                        "offset": 3884
+                    },
+                    "start": {
+                        "col": 27,
+                        "line": 117,
+                        "offset": 3880
+                    },
+                    "unique_id": {
+                        "md5sum": "c93f0c144842c3b8049a40b0c5a8d834",
+                        "type": "AST"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "<a href='https://%r/path/%r/'>Click me!</a>",
+                    "end": {
+                        "col": 60,
+                        "line": 121,
+                        "offset": 4040
+                    },
+                    "start": {
+                        "col": 17,
+                        "line": 121,
+                        "offset": 3997
+                    },
+                    "unique_id": {
+                        "md5sum": "47e5b3010424d26280c4a46084cbeed1",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 16,
+            "line": 121,
+            "offset": 3996
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 28,
+            "line": 135,
+            "offset": 4591
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [],
+                "taint_source": [{
+                    "end": {
+                        "col": 27,
+                        "line": 135,
+                        "offset": 4590
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 22,
+                        "line": 135,
+                        "offset": 4585
+                    }
+                }]
+            },
+            "fingerprint": "5f65cdbc394f87cfa8d586ef102d61cc5da2d948e7bee79e50b4f27cd7d2ca4fad070688918c33161bcfa3c81a18369e512ccba26c712723d25b7e532e5ae324_0",
+            "is_ignored": false,
+            "lines": "    htmlpage = '''\n    <body style='margin : 0px; overflow: hidden;'>\n        <scene-tag embedded arjs>\n            <marker-tag id=\"memarker\" type=\"pattern\" url=\"../static/patterns/pattern-kanji_qr.patt\" vidhandler>\n                <entity model=\"obj: url(https://{}/static/models.obj); mtl: url(../static/models/{}.mtl)\"> </entity>\n            </marker-tag>\n        </scene-tag>\n    </body>\n    '''.format(model,model)",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$APP": {
+                    "abstract_content": "app",
+                    "end": {
+                        "col": 5,
+                        "line": 124,
+                        "offset": 4092
+                    },
+                    "start": {
+                        "col": 2,
+                        "line": 124,
+                        "offset": 4089
+                    },
+                    "unique_id": {
+                        "md5sum": "be4c064da53819e0451eaa43ec34e42b",
+                        "type": "AST"
+                    }
+                },
+                "$FUNC": {
+                    "abstract_content": "load_model",
+                    "end": {
+                        "col": 15,
+                        "line": 125,
+                        "offset": 4132
+                    },
+                    "start": {
+                        "col": 5,
+                        "line": 125,
+                        "offset": 4122
+                    },
+                    "unique_id": {
+                        "md5sum": "18505aa26bf43c1bf00b35dfb1704fd2",
+                        "type": "AST"
+                    }
+                },
+                "$ROUTEVAR": {
+                    "abstract_content": "model",
+                    "end": {
+                        "col": 27,
+                        "line": 135,
+                        "offset": 4590
+                    },
+                    "start": {
+                        "col": 22,
+                        "line": 135,
+                        "offset": 4585
+                    },
+                    "unique_id": {
+                        "sid": 19,
+                        "type": "id"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "\n    <body style='margin : 0px; overflow: hidden;'>\n        <scene-tag embedded arjs>\n            <marker-tag id=\"memarker\" type=\"pattern\" url=\"../static/patterns/pattern-kanji_qr.patt\" vidhandler>\n                <entity model=\"obj: url(https://{}/static/models.obj); mtl: url(../static/models/{}.mtl)\"> </entity>\n            </marker-tag>\n        </scene-tag>\n    </body>\n    ",
+                    "end": {
+                        "col": 397,
+                        "line": 127,
+                        "offset": 4568
+                    },
+                    "start": {
+                        "col": 19,
+                        "line": 127,
+                        "offset": 4190
+                    },
+                    "unique_id": {
+                        "md5sum": "c45f3fa29458ed694e60eefa2c50b2dc",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 16,
+            "line": 127,
+            "offset": 4187
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 48,
+            "line": 157,
+            "offset": 5290
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 31,
+                        "line": 157,
+                        "offset": 5273
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 30,
+                        "line": 157,
+                        "offset": 5272
+                    }
+                }, {
+                    "end": {
+                        "col": 36,
+                        "line": 157,
+                        "offset": 5278
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 35,
+                        "line": 157,
+                        "offset": 5277
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 22,
+                        "line": 157,
+                        "offset": 5264
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 17,
+                        "line": 157,
+                        "offset": 5259
+                    }
+                }, {
+                    "end": {
+                        "col": 23,
+                        "line": 157,
+                        "offset": 5265
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 22,
+                        "line": 157,
+                        "offset": 5264
+                    }
+                }, {
+                    "end": {
+                        "col": 30,
+                        "line": 157,
+                        "offset": 5272
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 23,
+                        "line": 157,
+                        "offset": 5265
+                    }
+                }, {
+                    "end": {
+                        "col": 31,
+                        "line": 157,
+                        "offset": 5273
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 30,
+                        "line": 157,
+                        "offset": 5272
+                    }
+                }, {
+                    "end": {
+                        "col": 35,
+                        "line": 157,
+                        "offset": 5277
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 31,
+                        "line": 157,
+                        "offset": 5273
+                    }
+                }]
+            },
+            "fingerprint": "709b2a4d20737bec47c70eb375d3c09473548a2e7805eb719f3b0e02d498c2bf59b59ab38a7c6806db9e65f729e8111fd29cb791f5f400ebf77936d9b2e8fa4a_0",
+            "is_ignored": false,
+            "lines": "    url = url + flask.request.args.get(\"param\")",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$ANYTHING": {
+                    "abstract_content": "args",
+                    "end": {
+                        "col": 35,
+                        "line": 157,
+                        "offset": 5277
+                    },
+                    "start": {
+                        "col": 31,
+                        "line": 157,
+                        "offset": 5273
+                    },
+                    "unique_id": {
+                        "md5sum": "846fff96c59fc407b1535699956eb83e",
+                        "type": "AST"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "https://",
+                    "end": {
+                        "col": 20,
+                        "line": 155,
+                        "offset": 5210
+                    },
+                    "start": {
+                        "col": 12,
+                        "line": 155,
+                        "offset": 5202
+                    },
+                    "unique_id": {
+                        "md5sum": "91386a3d6ef34bf28bf8e54e72cbfece",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 11,
+            "line": 157,
+            "offset": 5253
+        }
+    }, {
+        "check_id": "tainted-url-host",
+        "end": {
+            "col": 43,
+            "line": 166,
+            "offset": 5469
+        },
+        "extra": {
+            "dataflow_trace": {
+                "intermediate_vars": [{
+                    "end": {
+                        "col": 26,
+                        "line": 166,
+                        "offset": 5452
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 25,
+                        "line": 166,
+                        "offset": 5451
+                    }
+                }, {
+                    "end": {
+                        "col": 31,
+                        "line": 166,
+                        "offset": 5457
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 30,
+                        "line": 166,
+                        "offset": 5456
+                    }
+                }],
+                "taint_source": [{
+                    "end": {
+                        "col": 17,
+                        "line": 166,
+                        "offset": 5443
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 12,
+                        "line": 166,
+                        "offset": 5438
+                    }
+                }, {
+                    "end": {
+                        "col": 18,
+                        "line": 166,
+                        "offset": 5444
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 17,
+                        "line": 166,
+                        "offset": 5443
+                    }
+                }, {
+                    "end": {
+                        "col": 25,
+                        "line": 166,
+                        "offset": 5451
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 18,
+                        "line": 166,
+                        "offset": 5444
+                    }
+                }, {
+                    "end": {
+                        "col": 26,
+                        "line": 166,
+                        "offset": 5452
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 25,
+                        "line": 166,
+                        "offset": 5451
+                    }
+                }, {
+                    "end": {
+                        "col": 30,
+                        "line": 166,
+                        "offset": 5456
+                    },
+                    "path": "code.py",
+                    "start": {
+                        "col": 26,
+                        "line": 166,
+                        "offset": 5452
+                    }
+                }]
+            },
+            "fingerprint": "c204f7f27afc9c329ac9ddd09ab558d280e16197a38b9375a333b5c32a4e572ae1dc08c67159cdfb3cab617f0637ec9c8b035b8d98120362f75a67b7e7e7608f_0",
+            "is_ignored": false,
+            "lines": "    url += flask.request.args.get(\"param\")",
+            "message": "User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host.",
+            "metadata": {
+                "category": "security",
+                "cwe": "CWE-918: Server-Side Request Forgery (SSRF)",
+                "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                "owasp": ["A10:2021", "A01:2017"],
+                "references": ["https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"],
+                "technology": ["flask"]
+            },
+            "metavars": {
+                "$ANYTHING": {
+                    "abstract_content": "args",
+                    "end": {
+                        "col": 30,
+                        "line": 166,
+                        "offset": 5456
+                    },
+                    "start": {
+                        "col": 26,
+                        "line": 166,
+                        "offset": 5452
+                    },
+                    "unique_id": {
+                        "md5sum": "44230d60fe5f224f0c44a61e9b1a533e",
+                        "type": "AST"
+                    }
+                },
+                "$URL": {
+                    "abstract_content": "url",
+                    "end": {
+                        "col": 8,
+                        "line": 166,
+                        "offset": 5434
+                    },
+                    "propagated_value": {
+                        "svalue_abstract_content": "\"https://\"",
+                        "svalue_end": {
+                            "col": 21,
+                            "line": 164,
+                            "offset": 5395
+                        },
+                        "svalue_start": {
+                            "col": 11,
+                            "line": 164,
+                            "offset": 5385
+                        }
+                    },
+                    "start": {
+                        "col": 5,
+                        "line": 166,
+                        "offset": 5431
+                    },
+                    "unique_id": {
+                        "sid": 24,
+                        "type": "id"
+                    }
+                },
+                "$URLSTR": {
+                    "abstract_content": "https://",
+                    "end": {
+                        "col": 20,
+                        "line": 164,
+                        "offset": 5394
+                    },
+                    "start": {
+                        "col": 12,
+                        "line": 164,
+                        "offset": 5386
+                    },
+                    "unique_id": {
+                        "md5sum": "91386a3d6ef34bf28bf8e54e72cbfece",
+                        "type": "AST"
+                    }
+                }
+            },
+            "severity": "WARNING"
+        },
+        "path": "code.py",
+        "start": {
+            "col": 5,
+            "line": 166,
+            "offset": 5431
+        }
+    }],
+    "version": "0.104.0"
+}
