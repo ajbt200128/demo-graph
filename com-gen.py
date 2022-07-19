@@ -21,6 +21,9 @@ class TaintTrace:
     def update_traces(self, other):
         self.next_traces.update(other)
 
+    def mermaid_link(self):
+        return f'click {hash(self)} "https://github.com/ajbt200128/demo-graph/blob/c0ee730e072412dd5f129baf13af90102c3122de/code.py#L{self.start["line"]}"'
+
     def mermaid_node_name(self):
         return f"{hash(self)}[\"{self.context}\"] "
 
@@ -80,33 +83,44 @@ class TaintTraceGraph:
 
     def to_graph(self):
         nodes = set()
-        styles = set()
-        links = set()
+        links = []
         for source in self.sources:
             nodes.update(list(source.to_mermaid_node()))
+            links.append(source.mermaid_link())
         for intermediate in self.intermediates:
             nodes.update(list(intermediate.to_mermaid_node()))
+            links.append(intermediate.mermaid_link())
         for sink in self.sinks:
             nodes.update(list(sink.to_mermaid_node()))
+            links.append(sink.mermaid_link())
 
         nodes_str = '\n'.join(nodes)
         source_names = '\n'.join(set([source.mermaid_node_name() for source in self.sources]))
         intermediate_names = '\n'.join(set([intermediate.mermaid_node_name() for intermediate in self.intermediates]))
         sink_names = '\n'.join(set([sink.mermaid_node_name() for sink in self.sinks]))
-
+        links_str = '\n'.join(links)
         return f"""
+
+<details>
+<summary>View Taint Trace</summary>
+
 ```mermaid
-graph LR;
-    subgraph sources
-        {source_names}
-    end
-    {intermediate_names}
-    subgraph sinks
-        {sink_names}
-    end
-    {nodes_str}
+    graph LR;
+        subgraph sources
+            {source_names}
+        end
+        {intermediate_names}
+        subgraph sinks
+            {sink_names}
+        end
+        {nodes_str}
+
+        {links_str}
 ```
-        """
+
+<br>
+</details>
+"""
 
 
     def __repr__(self):
@@ -162,9 +176,6 @@ def build_base():
     links = ""
     classes = ""
     GRAPH_BASE = f"""
-<sub>
-<details>
-<summary>View Taint Trace</summary>
 ```mermaid
 flowchart LR;
     {nodes}
@@ -176,10 +187,6 @@ flowchart LR;
     classDef sink fill:#ebf2fc,stroke:#193c47,stroke-width: 2px
     {classes}
 ```
-
-<br>
-</details>
-</sub>
 """
 
 with open("out.json") as f:
@@ -209,8 +216,6 @@ for res in results:
                 g.update(h)
                 seen.append(h)
         final.append(g)
-    print(final, len(final))
-
-
     for f in final:
+        print("==========================")
         print(f.to_graph())
